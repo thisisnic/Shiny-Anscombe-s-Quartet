@@ -49,4 +49,28 @@ shinyServer(function(input, output) {
     cor(anscombe[,number],anscombe[,number+4])
   })
   
+  output$properties<-renderTable({
+    
+    number = as.numeric(input$radio)
+    
+    dataPropLabels<-c("Mean (x): ",
+                      "Mean (y): ",
+                      "Variance (x): ",
+                      "Variance (y): ",
+                      "Correlation (x~y): "
+                      )
+    
+    dataProperties<-c(mean(anscombe[,number]),
+                      mean(anscombe[,number+4]),
+                      var(anscombe[,number]),
+                      var(anscombe[,number+4]),
+                      cor(anscombe[,number],anscombe[,number+4])
+                      )
+    
+   data.frame(row.names = dataPropLabels, Value=dataProperties)
+    
+   
+   
+  })
+  
 })
