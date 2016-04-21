@@ -20,34 +20,10 @@ shinyServer(function(input, output) {
   }
   )
   
-  output$data_meanx <- renderText({
-    number = as.numeric(input$radio)
-    mean(anscombe[,number])
-  })
-  
-  output$data_meany <- renderText({
-    number = as.numeric(input$radio)
-    mean(anscombe[,number+4])
-  })
-  
   output$dataset_number<-renderText({
     paste("Dataset ", as.numeric(input$radio))
   })
   
-  output$data_varx <- renderText({
-    number = as.numeric(input$radio)
-    var(anscombe[,number])
-  })
-  
-  output$data_vary <- renderText({
-    number = as.numeric(input$radio)
-    var(anscombe[,number+4])
-  })
-  
-  output$correlation <- renderText({
-    number = as.numeric(input$radio)
-    cor(anscombe[,number],anscombe[,number+4])
-  })
   
   output$properties<-renderTable({
     

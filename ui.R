@@ -36,17 +36,12 @@ shinyUI(fluidPage(
         tabPanel("View Raw Data", tableOutput("ans_table")),
         tabPanel("View Data Properties",
                  
-                 # Although the sidebar shows the number, reflected here so the user can see that...
-                 # ...something is being updated.
+                 # Although the sidebar already shows the number, it's duplicated... 
+                 # ...here so the user can see that something is being updated.
                  
                  
                  p(h3(textOutput("dataset_number"))),
-                 p(strong(tableOutput("properties")))
-                 #p(strong("Mean (x):", textOutput("data_meanx"))),
-                 #p(strong("Mean (y):", textOutput("data_meany"))),
-                 #p(strong("Variance (x):", textOutput("data_varx"))),
-                 #p(strong("Variance (y):", textOutput("data_vary"))),
-                 #p(strong("Correlation between x and y:", textOutput("correlation")))
+                 p(tableOutput("properties"))
                  
                  ),
         tabPanel("Plot Data", plotOutput("distPlot"))
