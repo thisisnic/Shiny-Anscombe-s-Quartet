@@ -1,5 +1,8 @@
 library(shiny)
 
+# Make the dataset available in the global environment
+anscombe_data <- anscombe
+
 shinyServer(function(input, output) {
   
   
@@ -8,7 +11,7 @@ shinyServer(function(input, output) {
     
     # get the appropriate values using the radio input
     # the +4 refers to the fact that the corresponding x and y columns are 4 columns apart
-    x = anscombe[,c(as.numeric(input$radio),as.numeric(input$radio)+4)]
+    x = anscombe_data[,c(as.numeric(input$radio),as.numeric(input$radio)+4)]
     
     # plot the selected values
     # the xlim and ylim have been set here manually so all plots are the same size and do not crop any data
@@ -16,7 +19,7 @@ shinyServer(function(input, output) {
   })
   
   output$ans_table <- renderTable({
-    anscombe[,c(as.numeric(input$radio),as.numeric(input$radio)+4)] 
+    anscombe_data[,c(as.numeric(input$radio),as.numeric(input$radio)+4)] 
   }
   )
   
@@ -36,11 +39,11 @@ shinyServer(function(input, output) {
                       "Correlation (x~y): "
                       )
     
-    dataProperties<-c(mean(anscombe[,number]),
-                      mean(anscombe[,number+4]),
-                      var(anscombe[,number]),
-                      var(anscombe[,number+4]),
-                      cor(anscombe[,number],anscombe[,number+4])
+    dataProperties<-c(mean(anscombe_data[,number]),
+                      mean(anscombe_data[,number+4]),
+                      var(anscombe_data[,number]),
+                      var(anscombe_data[,number+4]),
+                      cor(anscombe_data[,number],anscombe_data[,number+4])
                       )
     
    data.frame(row.names = dataPropLabels, Value=dataProperties)

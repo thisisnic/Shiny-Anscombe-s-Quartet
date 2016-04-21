@@ -1,8 +1,8 @@
 name: anscombe
 account: thisisnic
 server: shinyapps.io
-bundleId: 413846
+bundleId: 427377
 url: https://thisisnic.shinyapps.io/anscombe/
-when: 1460130344.50011
+when: 1461229033.19931
 asMultiple: FALSE
 asStatic: FALSE
