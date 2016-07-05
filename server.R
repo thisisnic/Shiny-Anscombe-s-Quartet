@@ -1,9 +1,11 @@
 library(shiny)
+library(shinydashboard)
+
 
 # Make the dataset available in the global environment
 anscombe_data <- anscombe
 
-shinyServer(function(input, output) {
+shinyServer(function(session, input, output) {
   
   
   # a reactive plot
