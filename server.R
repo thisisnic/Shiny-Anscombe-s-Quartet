@@ -54,6 +54,4 @@ shinyServer(function(session, input, output) {
    
   })
   
-  output$tabLabel <- renderText({paste0("You are viewing tab \"", input$whichTab, "\"")})
-  
 })
