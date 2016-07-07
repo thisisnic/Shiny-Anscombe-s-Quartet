@@ -79,6 +79,9 @@ shinyServer(function(session, input, output) {
                          "Correlation (x~y)", color="yellow", width=12, icon=icon("line-chart"))
                 ))
          
+
+    )
+   
   })
   
 })
