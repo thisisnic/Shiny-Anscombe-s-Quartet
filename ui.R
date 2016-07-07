@@ -2,7 +2,7 @@ library(shiny)
 library(shinydashboard)
 
 
-shinyUI(dashboardPage(
+shinyUI(dashboardPage(skin="yellow",
   
   header <- dashboardHeader(title="Exploring Anscombe's Quartet", titleWidth = 300),
   
@@ -16,8 +16,7 @@ shinyUI(dashboardPage(
                ),
       
       menuItem("Explore the data", icon = icon("bar-chart"), tabName = "explore",
-               menuSubItem("Raw Data", tabName="raw"),
-               menuSubItem("Summary Statistics", tabName="stats"),
+               menuSubItem("Raw Data and Summary Statistics", tabName="raw"),
                menuSubItem("Plots", tabName="plots"),
                
                
@@ -49,20 +48,18 @@ shinyUI(dashboardPage(
           
         tabItem(
           tabName = "raw",
-          box(title="Raw Data", width = 4,
-              tableOutput("ans_table")
+          box(title="Raw Data and Summary Statistics", width = 12,
               
+              
+              fluidRow(
+                column(6,dataTableOutput("ans_table")),
+                column(6,
+                       uiOutput("properties"))
+                )
               )
         ),
         
-        tabItem(
-          tabName="stats",
-          box(title="Summary Statistics", width = 6,
-              p(h4(textOutput("dataset_number"))),
-              p(tableOutput("properties"))    
-              )
-          
-        ),
+       
         
         tabItem(
           tabName="plots",
