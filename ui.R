@@ -25,7 +25,8 @@ shinyUI(dashboardPage(skin="yellow",
                    choices=list("1" = 1, "2" = 2,
                                 "3" = 3, "4" = 4),
                    selected=1
-      )
+      ),
+      menuSubItem("View all datasets", tabName="viewAll")
     ) # closes sidebarmenu
   ),
   body <- dashboardBody(
@@ -48,7 +49,7 @@ shinyUI(dashboardPage(skin="yellow",
           
         tabItem(
           tabName = "data",
-          box(title="Data statistics and plot", width = 12,
+          box(title="Raw data, statistics, and plotted data", width = 12,
               
               fluidRow(
                 column(12, h3(textOutput("datasetNumber")))
@@ -66,6 +67,19 @@ shinyUI(dashboardPage(skin="yellow",
           #box(title="Plots", width=12,
                  
           #)
+        ),
+        tabItem(
+          tabName = "viewAll",
+          box(title="View all datasets", width = 12,
+              
+              fluidRow(
+                column(6, plotOutput("plot1")),
+                column(6, plotOutput("plot2")),
+                column(6, plotOutput("plot3")),
+                column(6, plotOutput("plot4"))
+              )
+          )
+          
         )
     
       )

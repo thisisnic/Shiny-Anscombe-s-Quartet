@@ -31,6 +31,80 @@ shinyServer(function(session, input, output) {
     # plot(x, xlim=c(3,20), ylim=c(3,15), type="p", pch=16, main=))
   })
   
+  
+  output$plot1 <- renderPlot({
+    
+    # get the appropriate values using the radio input
+    x <- anscombe_data[,c(1,5)]
+    names(x) <- c("x1", "y1")
+    
+    # plot the selected values
+    # the xlim and ylim have been set here
+    # manually so all plots are the same size and do not crop any data
+    ggplot(x, aes(x=x1, y=y1)) +
+      geom_point(size=3) +
+      geom_smooth(method = "lm") +
+      labs(x="x", y = "y", title="Dataset 1") +
+      scale_x_continuous(limits=c(3,20)) + 
+      scale_y_continuous(limits=c(3,15))
+    
+  })
+  
+  output$plot2 <- renderPlot({
+    
+    # get the appropriate values using the radio input
+    x <- anscombe_data[,c(2,6)]
+    names(x) <- c("x1", "y1")
+    
+    # plot the selected values
+    # the xlim and ylim have been set here
+    # manually so all plots are the same size and do not crop any data
+    ggplot(x, aes(x=x1, y=y1)) +
+      geom_point(size=3) +
+      geom_smooth(method = "lm") +
+      labs(x="x", y = "y", title="Dataset 2") +
+      scale_x_continuous(limits=c(3,20)) + 
+      scale_y_continuous(limits=c(3,15))
+    
+  })
+  
+  output$plot3 <- renderPlot({
+    
+    # get the appropriate values using the radio input
+    x <- anscombe_data[,c(3,7)]
+    names(x) <- c("x1", "y1")
+    
+    # plot the selected values
+    # the xlim and ylim have been set here
+    # manually so all plots are the same size and do not crop any data
+    ggplot(x, aes(x=x1, y=y1)) +
+      geom_point(size=3) +
+      geom_smooth(method = "lm") +
+      labs(x="x", y = "y", title="Dataset 3") +
+      scale_x_continuous(limits=c(3,20)) + 
+      scale_y_continuous(limits=c(3,15))
+    
+  })
+  
+  output$plot4 <- renderPlot({
+    
+    # get the appropriate values using the radio input
+    x <- anscombe_data[,c(4,8)]
+    names(x) <- c("x1", "y1")
+    
+    # plot the selected values
+    # the xlim and ylim have been set here
+    # manually so all plots are the same size and do not crop any data
+    ggplot(x, aes(x=x1, y=y1)) +
+      geom_point(size=3) +
+      geom_smooth(method = "lm") +
+      labs(x="x", y = "y", title="Dataset 4") +
+      scale_x_continuous(limits=c(3,20)) + 
+      scale_y_continuous(limits=c(3,15))
+    
+  })
+  
+  
   output$ans_table <- renderDataTable({
     df <- anscombe_data[,c(as.numeric(input$radio),as.numeric(input$radio)+4)] 
     names(df) <- c("x", "y")
