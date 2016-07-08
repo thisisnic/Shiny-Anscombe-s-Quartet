@@ -22,7 +22,7 @@ shinyServer(function(session, input, output) {
     ggplot(x, aes(x=x1, y=y1)) +
       geom_point(size=3) +
       geom_smooth(method = "lm") +
-      labs(x="x", y = "y", title=paste("Dataset ",as.numeric(input$radio))) +
+      labs(x="x", y = "y") +
       scale_x_continuous(limits=c(3,20)) + 
       scale_y_continuous(limits=c(3,15))
   
@@ -38,7 +38,7 @@ shinyServer(function(session, input, output) {
               options=list(bFilter=0,bLengthChange=0,bInfo=0, paging = FALSE))
   })
   
-  output$dataset_number<-renderText({
+  output$datasetNumber<-renderText({
     paste("Dataset ", as.numeric(input$radio))
   })
   
@@ -55,7 +55,7 @@ shinyServer(function(session, input, output) {
     #                  paste("Correlation (x~y):",round(cor(anscombe_data[,number],anscombe_data[,number+4]),2))
     #)
     
-    list(h4(paste("Summary Statistics - Dataset", number)),
+    list(
          
          column(width=12,
                 fluidRow(
