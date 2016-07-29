@@ -105,29 +105,31 @@ shinyServer(function(session, input, output) {
   })
   
   
-  output$ans_table <- renderDataTable({
+  output$ans_table <- renderTable({
     df <- anscombe_data[,c(as.numeric(input$radio),as.numeric(input$radio)+4)] 
     names(df) <- c("x", "y")
-    datatable(df, 
-              options=list(bFilter=0,bLengthChange=0,bInfo=0, paging = FALSE))
+    df
   })
   
   output$datasetNumber<-renderText({
     paste("Dataset ", as.numeric(input$radio))
   })
   
+  output$radios <- renderUI({
+    
+    radioButtons("radio",
+                 "Which dataset would you like to explore?:",
+                 choices=list("1" = 1, "2" = 2,
+                              "3" = 3, "4" = 4),
+                 selected=1
+    )
+    
+  })
   
   
   output$properties<-renderUI({
     
     number = as.numeric(input$radio)
-    
-    #dataPropList<-list(paste("Mean (x):",round(mean(anscombe_data[,number])),2),
-    #                  paste("Mean (y):", round(mean(anscombe_data[,number+4]),2)),
-    #                  paste("Variance (x):",round(var(anscombe_data[,number]),2)),
-    #                  paste("Variance (y):",round(var(anscombe_data[,number+4]),2)),
-    #                  paste("Correlation (x~y):",round(cor(anscombe_data[,number],anscombe_data[,number+4]),2))
-    #)
     
     list(
          

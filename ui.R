@@ -71,7 +71,7 @@ shinyUI(
             textOutput("datasetNumber")
           ))),
           fluidRow(
-            column(2, dataTableOutput("ans_table")),
+            column(2, tableOutput("ans_table")),
             column(4,
                    uiOutput("properties")),
             column(6,
